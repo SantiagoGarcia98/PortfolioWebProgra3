@@ -1,0 +1,437 @@
+/* ================= Variables de Color (Paleta extraída) ================= */
+:root {
+    /* Colores extraídos de la imagen */
+    --color-purpura-oscuro: #830cc4;
+    --color-purpura-medio: #a63ae6;
+    --color-purpura-claro: #c263f9;
+    --color-fondo-lila: #f3d9ff;
+    --color-blanco: #ffffff;
+    
+    /* Asignación semántica */
+    --color-fondo: var(--color-fondo-lila);
+    --color-fondo-tarjetas: var(--color-blanco);
+    --color-texto: #2a113a; /* Un tono muy oscuro del púrpura para contraste */
+    --color-texto-claro: var(--color-blanco);
+    --color-acento: var(--color-purpura-medio);
+    --color-primario: var(--color-purpura-oscuro);
+    --color-hover: var(--color-purpura-claro);
+}
+
+/* ================= Reset y Base ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* Compensación para el menú fijo al hacer scroll */
+section {
+    padding: 80px 20px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    scroll-margin-top: 60px; 
+}
+
+h1, h2, h3 {
+    color: var(--color-primario);
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-purpura-claro);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* ================= 1. Header y Menú ================= */
+header {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Menú móvil (oculto por defecto) */
+.menu-toggle, .menu-icon {
+    display: none;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-fondo-lila);
+}
+
+/* Responsive Menu (Truco Checkbox) */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        background-color: var(--color-primario);
+        flex-direction: column;
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 15px;
+    }
+
+    .menu-toggle:checked ~ .nav-links {
+        left: 0;
+    }
+}
+
+/* ================= Botones ================= */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-fondo-lila);
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+/* ================= 2. Presentación (Hero) ================= */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    min-height: 80vh;
+    text-align: center;
+}
+
+.hero-content {
+    flex: 1 1 400px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.hero-content h2 {
+    font-size: 1.5rem;
+    color: var(--color-acento);
+    border: none;
+    margin-bottom: 20px;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.hero-image {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--color-primario);
+    box-shadow: 0 10px 20px rgba(131, 12, 196, 0.3); /* Sombra basada en la paleta */
+    background-color: var(--color-purpura-claro); /* Placeholder por si no hay imagen */
+}
+
+@media (min-width: 769px) {
+    .hero { text-align: left; }
+    .hero-buttons { justify-content: flex-start; }
+}
+
+/* ================= 3. Sobre mí ================= */
+.sobre-mi-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+@media (min-width: 769px) {
+    .sobre-mi-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.datos-rapidos, .timeline {
+    background: var(--color-fondo-tarjetas);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.datos-rapidos ul {
+    list-style: none;
+}
+
+.datos-rapidos li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-fondo-lila);
+    padding-bottom: 5px;
+}
+
+.timeline-item {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid var(--color-acento);
+}
+
+/* ================= 4. Conocimientos ================= */
+.conocimientos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.categoria {
+    background: var(--color-fondo-tarjetas);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.tag {
+    background-color: var(--color-fondo-lila);
+    color: var(--color-primario);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ================= 5. Proyectos ================= */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.proyecto-card {
+    background: var(--color-fondo-tarjetas);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.proyecto-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background-color: var(--color-purpura-claro); /* Placeholder */
+}
+
+.proyecto-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.proyecto-info h3 {
+    margin-bottom: 10px;
+}
+
+.meta, .contexto {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.proyecto-info .desc {
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.proyecto-info .rol {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+/* Tarjetas destacadas ocupan más espacio en pantallas grandes */
+@media (min-width: 900px) {
+    .destacado {
+        grid-column: span 2;
+        flex-direction: row;
+    }
+    .destacado .proyecto-img {
+        width: 40%;
+        height: auto;
+    }
+    .destacado .proyecto-info {
+        width: 60%;
+    }
+}
+
+/* ================= 6. Redes ================= */
+.redes-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.redes-container a {
+    color: var(--color-primario);
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.redes-container a:hover {
+    color: var(--color-acento);
+    transform: scale(1.1);
+}
+
+/* ================= 7. Contacto ================= */
+.formulario {
+    background: var(--color-fondo-tarjetas);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--color-primario);
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid var(--color-purpura-claro);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 5px var(--color-fondo-lila);
+}
+
+.formulario .btn {
+    width: 100%;
+}
+
+/* ================= Footer ================= */
+footer {
+    background-color: var(--color-primario);
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.decoracion-footer {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: var(--color-fondo-lila);
+}
